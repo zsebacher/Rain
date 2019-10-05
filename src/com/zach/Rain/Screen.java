@@ -28,7 +28,7 @@ public class Screen {
 		}
 	}
 	
-	public void render(int yOffset, int xOffset) {
+	public void render(int xOffset, int yOffset) {
 		for (int y = 0; y < height; y++) {
 			int yy = y + yOffset;
 			if(y < 0 || y >= height) break;

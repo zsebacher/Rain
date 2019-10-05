@@ -23,6 +23,7 @@ public class Game extends Canvas implements Runnable{
 	private Thread thread;
 	private JFrame frame;
 	private Screen screen;
+	private Keyboard key;
 	private boolean running = false;
 	
 	private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -36,6 +37,9 @@ public class Game extends Canvas implements Runnable{
 		
 		screen = new Screen(width, height);
 		frame = new JFrame(Game.NAME);
+		key = new Keyboard();
+		
+		addKeyListener(key);
 	}
 	public synchronized void start() {
 		running = true;
@@ -85,8 +89,12 @@ public class Game extends Canvas implements Runnable{
 	}	
 	
 	public void update() {
-		x++;
-		y++;
+		key.update();
+		if(key.up) y--;
+		if(key.down) y++;
+		if(key.left) x--;
+		if(key.right) x++; 
+
 	}
 	
 	public void render() {
