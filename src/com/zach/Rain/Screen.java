@@ -36,7 +36,7 @@ public class Screen {
 				int xx = x + xOffset;
 				if(x < 0 || x >= width) break;
 				int tileIndex = ((xx >> 4) & MAP_SIZE_MASK) + ((yy >> 4) & MAP_SIZE_MASK) * MAP_SIZE; // bitwise >> 4 is the same as dividing by 16
-				pixels[x + y * width] = tiles[tileIndex];
+				pixels[x + y * width] = Sprite.temp.pixels[(x&15) + (y&15) * Sprite.temp.SIZE];
 			}
 		}
 	}
